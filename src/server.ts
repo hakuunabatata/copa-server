@@ -11,9 +11,9 @@ async function bootstrap() {
   });
 
   fastify.get("/pools/count", async () => {
-    const pools = await prisma.pool.findMany();
+    const pools = await prisma.pool.count();
 
-    return { count: pools.length };
+    return { count: pools };
   });
 
   await fastify.listen({ port: 3333 });
